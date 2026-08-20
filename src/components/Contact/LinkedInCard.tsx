@@ -1,10 +1,46 @@
 import type { ComponentType, CSSProperties } from "react";
+import { motion } from "framer-motion";
+import { JOB_TITLES } from "../../content";
 
 type LinkedInCardProps = {
   href: string;
   icon: ComponentType<{ className?: string; size?: number }>;
   style?: CSSProperties;
 };
+
+// Column 1 spells its title letter-by-letter, stacked top to bottom.
+// Columns 2 and 3 repeat their whole title as normal text, still stacked
+// vertically and wrapped to fit the narrow column.
+const LETTER_ROWS = [...JOB_TITLES[0].toUpperCase()," "]; // "SOFTWARE ENGINEER" -> one char per row
+const WORD_REPEAT_COUNT = 4;
+
+type ScrollColumnProps = {
+  rows: string[];
+  duration: number;
+  rowClassName: string;
+};
+
+// Rows are rendered twice back-to-back so animating to exactly -50% loops
+// seamlessly, no matter how tall each row ends up being.
+function ScrollColumn({ rows, duration, rowClassName }: ScrollColumnProps) {
+  const loopedRows = [...rows, ...rows];
+
+  return (
+    <div className="relative h-full min-w-0 flex-1 overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)]">
+      <motion.div
+        className="flex flex-col items-center"
+        animate={{ y: ["0%", "-50%"] }}
+        transition={{ duration, repeat: Infinity, ease: "linear" }}
+      >
+        {loopedRows.map((row, index) => (
+          <span key={index} className={rowClassName}>
+            {row === " " ? " " : row}
+          </span>
+        ))}
+      </motion.div>
+    </div>
+  );
+}
 
 export default function LinkedInCard({
   href,
@@ -18,16 +54,35 @@ export default function LinkedInCard({
       rel="noreferrer"
       aria-label="LinkedIn"
       style={style}
-      className="relative flex h-32 flex-col justify-between overflow-hidden rounded-2xl border border-black/10 bg-white/60 p-5 text-black transition hover:-translate-y-1 hover:border-black/30 hover:shadow-sm lg:h-auto dark:border-white/10 dark:bg-white/[0.03] dark:text-white dark:hover:border-white/30"
+      className="relative flex h-32 flex-col overflow-hidden rounded-2xl border border-black/10 bg-white/60 p-5 text-black transition hover:-translate-y-1 hover:border-black/30 hover:shadow-sm lg:h-auto dark:border-white/10 dark:bg-white/[0.03] dark:text-white dark:hover:border-white/30"
     >
-      {/* TODO: floating decorative effect goes here */}
-
       {/* Icon swatch - inverted so it reads like a brand mark (no official LinkedIn icon in our set) */}
-      <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-black text-white dark:bg-white dark:text-black">
+      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-black text-white dark:bg-white dark:text-black">
         <Icon size={20} />
       </span>
 
-      <span className="text-sm font-medium sm:text-base">LinkedIn</span>
+      {/* 3 columns, each endlessly scrolling one job title */}
+      <div className="my-2 flex min-h-0 flex-1 gap-2">
+        <ScrollColumn
+          rows={LETTER_ROWS}
+          duration={16}
+          rowClassName="py-1 text-center text-[10px] font-semibold leading-none text-black/60 dark:text-white/60"
+        />
+        <ScrollColumn
+          rows={Array(WORD_REPEAT_COUNT).fill(JOB_TITLES[1])}
+          duration={11}
+          rowClassName="break-words py-3 text-center text-[9px] leading-tight font-medium text-black/50 dark:text-white/50"
+        />
+        <ScrollColumn
+          rows={Array(WORD_REPEAT_COUNT).fill(JOB_TITLES[2])}
+          duration={13}
+          rowClassName="break-words py-3 text-center text-[9px] leading-tight font-medium text-black/50 dark:text-white/50"
+        />
+      </div>
+
+      <span className="shrink-0 text-sm font-medium sm:text-base">
+        LinkedIn
+      </span>
     </a>
   );
 }

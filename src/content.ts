@@ -10,6 +10,13 @@ export const DEFAULT_SECTIONS: NavSection[] = [
   { id: "contact", label: "contact" },
 ];
 
+// Shared between Hero's rotating headline and the LinkedIn card's scrolling list
+export const JOB_TITLES = [
+  "Software Engineer",
+  "Full Stack Engineer",
+  "Game Developer",
+];
+
 export const SERVICES = [
   {
     title: "Full Stack Web Development",
@@ -184,6 +191,15 @@ export const PROJECTS: Project[] = [
     githubUrl: "https://github.com/ChongKangRui/YelpCamp",
     imageSrc: yelpCampImg,
   },
+];
+
+// Smaller public repos that don't warrant a full case-study slide in
+// Projects, but are real work worth surfacing as GitHub card placeholders.
+export const EXTRA_GITHUB_PROJECTS = [
+  "CGE",
+  "SpaceShooter_3D",
+  "Python_FileOrganizer",
+  "Python_UnitConverter",
 ];
 
 type Experience = {

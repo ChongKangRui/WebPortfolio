@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { FiMail, FiDownload, FiChevronDown } from "react-icons/fi";
-import { useTheme } from "../context/ThemeContext";
-import { DEFAULT_SECTIONS } from "../content";
+import { FiMail, FiDownload } from "react-icons/fi";
+import { DEFAULT_SECTIONS, JOB_TITLES } from "../content";
 
 export interface HeroProps {
   availableForWork?: boolean;
 }
 
-const TITLES = ["Software Engineer", "Full Stack Engineer", "Game Developer"];
 const SWITCH_INTERVAL_MS = 3000;
 
 export default function Hero({ availableForWork = true }: HeroProps) {
@@ -16,7 +14,7 @@ export default function Hero({ availableForWork = true }: HeroProps) {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setTitleIndex((prev) => (prev + 1) % TITLES.length);
+      setTitleIndex((prev) => (prev + 1) % JOB_TITLES.length);
     }, SWITCH_INTERVAL_MS);
     return () => clearInterval(interval);
   }, []);
@@ -41,14 +39,14 @@ export default function Hero({ availableForWork = true }: HeroProps) {
         <div className="my-2 py-5 overflow-hidden">
           <AnimatePresence mode="wait">
             <motion.p
-              key={TITLES[titleIndex]}
+              key={JOB_TITLES[titleIndex]}
               initial={{ y: "100%", opacity: 0 }}
               animate={{ y: "0%", opacity: 1 }}
               exit={{ y: "-100%", opacity: 0 }}
               transition={{ duration: 0.4, ease: "easeInOut" }}
               className="font-sans text-4xl text-slate-900 dark:text-white md:text-8xl"
             >
-              {TITLES[titleIndex]}
+              {JOB_TITLES[titleIndex]}
             </motion.p>
           </AnimatePresence>
         </div>
