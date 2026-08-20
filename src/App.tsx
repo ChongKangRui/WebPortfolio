@@ -3,6 +3,7 @@ import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import ExpertiseOffer from "./components/Expertise/ExpertiseOffer";
 import TechStack from "./components/TechStack/TechStack";
+import Projects from "./components/Projects/Projects";
 function App() {
 
   return (
@@ -12,12 +13,8 @@ function App() {
         <Hero />
         <ExpertiseOffer/>
         <TechStack/>
-        {/* <Navbar />
-          <Hero />
-          <Technologies />
-          <Projects />
-          <Achievements />
-          <Contact /> */}
+        <Projects/>
+      
       </div>
     </>
   );
