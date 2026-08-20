@@ -1,11 +1,14 @@
 import type { ComponentType, CSSProperties } from "react";
 import { motion } from "framer-motion";
 import { PROJECTS, EXTRA_GITHUB_PROJECTS } from "../../content";
+import { fadeInUp, revealTransition, revealViewport } from "../../lib/motion";
+import { LG_QUERY, useMediaQuery } from "../../hooks/useMediaQuery";
 
 type GithubCardProps = {
   href: string;
   icon: ComponentType<{ className?: string; size?: number }>;
   style?: CSSProperties;
+  delay?: number;
 };
 
 // The 3 case-study projects plus the smaller placeholder repos, in that order
@@ -30,15 +33,50 @@ export default function GithubCard({
   href,
   icon: Icon,
   style,
+  delay = 0,
 }: GithubCardProps) {
+  // Below `lg`, ContactBento's grid collapses to a stacked flex column — the
+  // drifting-chip card only makes sense in the wide grid cell, so on small
+  // screens this renders as a plain row instead (same style as GmailCard)
+  // with no entrance/hover motion at all.
+  const isDesktop = useMediaQuery(LG_QUERY);
+
+  if (!isDesktop) {
+    return (
+      <motion.a
+        href={href}
+        target="_blank"
+        rel="noreferrer"
+        aria-label="GitHub"
+        style={style}
+        initial={fadeInUp}
+        whileInView={{ opacity: 1, y: 0 }}
+      viewport={revealViewport}
+      whileHover={{ y: -4, transition: { duration: 0.2, ease: "easeOut" } }}
+      transition={revealTransition(delay)}
+        className="flex h-20 items-center gap-10 rounded-2xl border border-black/10 bg-white/60 px-5 text-black transition-colors hover:border-black/30 hover:shadow-sm dark:border-white/10 dark:bg-white/[0.03] dark:text-white dark:hover:border-white/30"
+      >
+        <Icon className="shrink-0" size={26} />
+        <span className="truncate text-sm font-medium sm:text-base">
+          github/ChongKangRui
+        </span>
+      </motion.a>
+    );
+  }
+
   return (
-    <a
+    <motion.a
       href={href}
       target="_blank"
       rel="noreferrer"
       aria-label="GitHub"
       style={style}
-      className="relative flex h-24 items-start gap-3 overflow-hidden rounded-2xl border border-black/10 bg-white/60 px-6 pt-6 text-black transition hover:-translate-y-1 hover:border-black/30 hover:shadow-sm lg:h-auto dark:border-white/10 dark:bg-white/[0.03] dark:text-white dark:hover:border-white/30"
+      initial={fadeInUp}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={revealViewport}
+      whileHover={{ y: -4, transition: { duration: 0.2, ease: "easeOut" } }}
+      transition={revealTransition(delay)}
+      className="relative flex h-24 items-start gap-3 overflow-hidden rounded-2xl border border-black/10 bg-white/60 px-6 pt-6 text-black transition-colors hover:border-black/30 hover:shadow-sm lg:h-auto dark:border-white/10 dark:bg-white/[0.03] dark:text-white dark:hover:border-white/30"
     >
       {/* Ambient drift of past project names, filling the space below the label */}
       <div className="pointer-events-none absolute inset-0 z-0 hidden lg:block">
@@ -67,6 +105,6 @@ export default function GithubCard({
       <span className="relative z-10 text-sm font-medium sm:text-base">
         github/ChongKangRui
       </span>
-    </a>
+    </motion.a>
   );
 }

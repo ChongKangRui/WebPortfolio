@@ -1,7 +1,9 @@
 import { useRef } from "react";
+import { motion } from "framer-motion";
 import Autoplay from "embla-carousel-autoplay";
 import SessionTitle from "../SessionTitle";
 import { DEFAULT_SECTIONS, SERVICES } from "../../content";
+import { fadeInUp, revealTransition, revealViewport } from "../../lib/motion";
 
 import {
   Carousel,
@@ -34,19 +36,25 @@ export default function ExpertiseOffer() {
         plugins={[autoplay.current]}
       >
         <CarouselContent className="-ml-1">
-          {SERVICES.map((service) => (
+          {SERVICES.map((service, index) => (
             <CarouselItem
               key={service.title}
               className="basis-full pl-1 sm:basis-1/2 lg:basis-1/3"
             >
-              <div className="p-1">
+              <motion.div
+                className="p-1"
+                initial={fadeInUp}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={revealViewport}
+                transition={revealTransition(index * 0.1)}
+              >
                 <ExpertiseContentCard
                   imageSrc={service.imageSrc}
                   title={service.title}
                   content={service.content}
-                  
+
                 />
-              </div>
+              </motion.div>
             </CarouselItem>
           ))}
         </CarouselContent>

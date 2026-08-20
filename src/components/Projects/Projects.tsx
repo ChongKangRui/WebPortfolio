@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import SessionTitle from "../SessionTitle";
 import { DEFAULT_SECTIONS, PROJECTS } from "../../content";
 import {
@@ -10,6 +11,7 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 import ProjectSlide from "./ProjectSlide";
+import { fadeInUp, revealTransition, revealViewport } from "../../lib/motion";
 
 export default function Projects() {
   const [api, setApi] = useState<CarouselApi>();
@@ -35,7 +37,13 @@ export default function Projects() {
         description="A selection of full-stack applications I've built end-to-end — from database design and APIs to polished, production interfaces."
       />
 
-      <div className="relative mx-auto mt-12 max-w-5xl">
+      <motion.div
+        className="relative mx-auto mt-12 max-w-5xl"
+        initial={fadeInUp}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={revealViewport}
+        transition={revealTransition()}
+      >
         <Carousel opts={{ loop: true }}  setApi={setApi}>
           <CarouselContent>
             {PROJECTS.map((project) => (
@@ -68,7 +76,7 @@ export default function Projects() {
             />
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

@@ -1,6 +1,8 @@
+import { motion } from "framer-motion";
 import SessionTitle from "../SessionTitle";
 import { DEFAULT_SECTIONS, TECH_STACK } from "../../content";
 import MagneticIcon from "./MagneticIcon";
+import { groupRevealViewport, staggerContainer, staggerItem } from "../../lib/motion";
 
 export default function TechStack() {
   return (
@@ -25,16 +27,26 @@ export default function TechStack() {
           );
         })}
       </div> */}
-      <div className="flex flex-wrap justify-center gap-6 lg:px-[6rem] xl:px-[10rem]">
+      {/* One shared trigger for the whole grid: as soon as the first icons
+          appear, every icon starts its transition, just staggered a beat
+          apart, instead of each icon waiting for its own turn to scroll in. */}
+      <motion.div
+        className="flex flex-wrap justify-center gap-6 lg:px-[6rem] xl:px-[10rem]"
+        variants={staggerContainer(0.02)}
+        initial="hidden"
+        whileInView="visible"
+        viewport={groupRevealViewport}
+      >
         {TECH_STACK.map((c) => (
-          <div
+          <motion.div
             key={c.name}
             className="flex h-20 w-[80px] flex-col items-center justify-center"
+            variants={staggerItem}
           >
             <MagneticIcon icon={c.icon} className="h-8 w-8" />
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 }

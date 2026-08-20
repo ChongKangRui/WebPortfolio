@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { FiMenu, FiX, FiSun, FiMoon } from "react-icons/fi";
 import { useTheme } from "../context/ThemeContext";
 import { DEFAULT_SECTIONS } from "../content";
@@ -36,7 +37,12 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 flex items-center justify-between p-4">
+      <motion.header
+        initial={{ opacity: 0, y: -16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className="sticky top-0 z-50 flex items-center justify-between p-4"
+      >
         <button
           type="button"
           onClick={toggleTheme}
@@ -55,7 +61,7 @@ export default function Navbar() {
         >
           {isMenuOpen ? <FiX size={18} /> : <FiMenu size={18} />}
         </button>
-      </header>
+      </motion.header>
 
       {isMenuOpen && (
         <div

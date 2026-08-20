@@ -1,11 +1,14 @@
 import type { ComponentType, CSSProperties } from "react";
 import { motion } from "framer-motion";
 import { JOB_TITLES } from "../../content";
+import { fadeInUp, revealTransition, revealViewport } from "../../lib/motion";
+import { LG_QUERY, useMediaQuery } from "../../hooks/useMediaQuery";
 
 type LinkedInCardProps = {
   href: string;
   icon: ComponentType<{ className?: string; size?: number }>;
   style?: CSSProperties;
+  delay?: number;
 };
 
 // Column 1 spells its title letter-by-letter, stacked top to bottom.
@@ -34,7 +37,7 @@ function ScrollColumn({ rows, duration, rowClassName }: ScrollColumnProps) {
       >
         {loopedRows.map((row, index) => (
           <span key={index} className={rowClassName}>
-            {row === " " ? " " : row}
+            {row === " " ? " " : row}
           </span>
         ))}
       </motion.div>
@@ -46,15 +49,50 @@ export default function LinkedInCard({
   href,
   icon: Icon,
   style,
+  delay = 0,
 }: LinkedInCardProps) {
+  // Below `lg`, ContactBento's grid collapses to a stacked flex column — the
+  // scrolling-ticker card only makes sense in the tall grid cell, so on
+  // small screens this renders as a plain row instead (same style as
+  // GmailCard) with no entrance/hover motion at all.
+  const isDesktop = useMediaQuery(LG_QUERY);
+
+  if (!isDesktop) {
+    return (
+      <motion.a
+        href={href}
+        target="_blank"
+        rel="noreferrer"
+        aria-label="LinkedIn"
+        style={style}
+        initial={fadeInUp}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={revealViewport}
+      whileHover={{ y: -4, transition: { duration: 0.2, ease: "easeOut" } }}
+      transition={revealTransition(delay)}
+        className="flex h-20 items-center gap-10 rounded-2xl border border-black/10 bg-white/60 px-5 text-black transition-colors hover:border-black/30 hover:shadow-sm dark:border-white/10 dark:bg-white/[0.03] dark:text-white dark:hover:border-white/30"
+      >
+        <Icon className="shrink-0" size={26} />
+        <span className="truncate text-sm font-medium sm:text-base">
+          LinkedIn
+        </span>
+      </motion.a>
+    );
+  }
+
   return (
-    <a
+    <motion.a
       href={href}
       target="_blank"
       rel="noreferrer"
       aria-label="LinkedIn"
       style={style}
-      className="relative flex h-32 flex-col overflow-hidden rounded-2xl border border-black/10 bg-white/60 p-5 text-black transition hover:-translate-y-1 hover:border-black/30 hover:shadow-sm lg:h-auto dark:border-white/10 dark:bg-white/[0.03] dark:text-white dark:hover:border-white/30"
+      initial={fadeInUp}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={revealViewport}
+      whileHover={{ y: -4, transition: { duration: 0.2, ease: "easeOut" } }}
+      transition={revealTransition(delay)}
+      className="relative flex h-32 flex-col overflow-hidden rounded-2xl border border-black/10 bg-white/60 p-5 text-black transition-colors hover:border-black/30 hover:shadow-sm lg:h-auto dark:border-white/10 dark:bg-white/[0.03] dark:text-white dark:hover:border-white/30"
     >
       {/* Icon swatch - inverted so it reads like a brand mark (no official LinkedIn icon in our set) */}
       <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-black text-white dark:bg-white dark:text-black">
@@ -83,6 +121,6 @@ export default function LinkedInCard({
       <span className="shrink-0 text-sm font-medium sm:text-base">
         LinkedIn
       </span>
-    </a>
+    </motion.a>
   );
 }

@@ -15,10 +15,11 @@ export default function Experience() {
       />
 
       <div className="mx-auto mt-12 flex max-w-4xl flex-col gap-10 md:gap-14">
-        {EXPERIENCES.map((experience) => (
+        {EXPERIENCES.map((experience, index) => (
           <ExperienceItem
             key={`${experience.company}-${experience.title}`}
             experience={experience}
+            index={index}
           />
         ))}
       </div>
