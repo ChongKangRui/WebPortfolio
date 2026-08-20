@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import ExpertiseOffer from "./components/Expertise/ExpertiseOffer";
 import TechStack from "./components/TechStack/TechStack";
 import Projects from "./components/Projects/Projects";
+import Experience from "./components/Experience/Experience";
 function App() {
 
   return (
@@ -14,7 +15,8 @@ function App() {
         <ExpertiseOffer/>
         <TechStack/>
         <Projects/>
-      
+        <Experience/>
+
       </div>
     </>
   );

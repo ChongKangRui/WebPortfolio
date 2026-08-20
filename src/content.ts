@@ -183,3 +183,51 @@ export const PROJECTS: Project[] = [
     imageSrc: yelpCampImg,
   },
 ];
+
+type Experience = {
+  title: string;
+  company: string;
+  location: string;
+  startDate: string;
+  endDate: string;
+  bullets: string[];
+};
+
+export const EXPERIENCES: Experience[] = [
+  {
+    title: "VR Software Engineer",
+    company: "Insense Studios",
+    location: "Remote",
+    startDate: "Sep 2024",
+    endDate: "May 2026",
+    bullets: [
+      "Designed the procedural level-generation system for a VR game — a constraint-based algorithm with backtracking that validates and places content automatically, the same class of problem behind scheduling and layout engines.",
+      "Built the game's AI and interaction systems — modular, event-driven state machines driving NPC behavior, including internal tooling to tune and debug them at runtime.",
+      "Engineered the core gameplay loop, synchronizing simultaneous state changes across combat, equipment, and movement in real time without race conditions or inconsistent behavior.",
+      "Profiled and optimized rendering performance, improving frame rate by 140% (30 to 72 FPS) through systematic bottleneck analysis.",
+    ],
+  },
+  {
+    title: "Software Engineer",
+    company: "Freelancer",
+    location: "Remote",
+    startDate: "May 2024",
+    endDate: "Aug 2024",
+    bullets: [
+      "Designed an extensible weapon and ability system architecture for a game project, letting new content be added without code duplication.",
+      "Built a lifecycle management system to spawn, track, and retire in-game AI characters in a high-traffic real-time environment.",
+    ],
+  },
+  {
+    title: "Software Engineer",
+    company: "Nimbus Games",
+    location: "Remote",
+    startDate: "Feb 2023",
+    endDate: "Jan 2024",
+    bullets: [
+      "Delivered two commercial projects at Nimbus Games: Chiyo, and a playable multiplayer demo supporting up to 4 concurrent players.",
+      "Used Unreal Engine's replication system to keep gameplay and AI state consistent between server and clients for the multiplayer demo.",
+      "Built the core gameplay systems for Chiyo - puzzle logic, AI behavior, the save system, and player interaction and inventory mechanics.",
+    ],
+  },
+];
