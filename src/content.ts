@@ -1,4 +1,7 @@
 import type { NavSection } from "./components/Navbar";
+import fullStackImg from "./assets/fullStack.png";
+import backendImg from "./assets/backend.png";
+import gameDevImg from "./assets/gameDev.png";
 
 
 export const DEFAULT_SECTIONS: NavSection[] = [
@@ -22,19 +25,19 @@ export const SERVICES = [
     title: "Full Stack Web Development",
     content:
       "Responsive, production-grade web apps with React, Next.js, and TypeScript — from UI to deployment on Vercel.",
-    imageSrc: "src/assets/fullStack.png",
+    imageSrc: fullStackImg,
   },
   {
     title: "API & Backend development",
     content:
       "Scalable REST APIs and backend systems with Node.js, PostgreSQL, and Prisma. Experience with AI/LLM integrations, payment processing (Stripe), and CI/CD via GitHub Actions and Docker.",
-    imageSrc: "src/assets/backend.png",
+    imageSrc: backendImg,
   },
   {
     title: "Game Development",
     content:
       "Commercial and personal game projects built with Unreal Engine and Unity. Experience with multiplayer systems, ECS architecture, complex state management, custom algorithms and mathematical solutions.",
-    imageSrc: "src/assets/gameDev.png",
+    imageSrc: gameDevImg,
   },
 ];
 import {
