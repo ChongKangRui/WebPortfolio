@@ -99,11 +99,11 @@ export default function Hero({ availableForWork = true }: HeroProps) {
 
           <a
             href={resume}
-            download
+            download="ChongKangRui_Resume.pdf"
             className="inline-flex items-center gap-2 rounded-lg border border-black bg-black px-5 py-2.5 text-sm font-medium text-white transition hover:bg-slate-800 dark:border-white dark:bg-white dark:text-black dark:hover:bg-slate-100"
           >
             <FiDownload size={16} />
-            Download CV
+            Download Resume
           </a>
         </motion.div>
       </div>
