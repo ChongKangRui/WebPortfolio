@@ -194,6 +194,7 @@ export const PROJECTS: Project[] = [
     githubUrl: "https://github.com/ChongKangRui/YelpCamp",
     imageSrc: yelpCampImg,
   },
+  
 ];
 
 // Smaller public repos that don't warrant a full case-study slide in

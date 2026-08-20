@@ -11,7 +11,7 @@ export default function Experience() {
       <SessionTitle
         title="My Journey"
         mainTitle="EXPERIENCE"
-        description="My background is in game development, not web — but the core engineering discipline doesn't change: architecting systems, managing complex state and optimizing performance."
+        description="I came from game development background, not web — but the core engineering discipline doesn't change: architecting systems, managing complex state and optimizing performance."
       />
 
       <div className="mx-auto mt-12 flex max-w-4xl flex-col gap-10 md:gap-14">

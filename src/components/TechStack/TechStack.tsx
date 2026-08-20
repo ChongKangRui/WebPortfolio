@@ -1,5 +1,6 @@
 import SessionTitle from "../SessionTitle";
 import { DEFAULT_SECTIONS, TECH_STACK } from "../../content";
+import MagneticIcon from "./MagneticIcon";
 
 export default function TechStack() {
   return (
@@ -25,16 +26,15 @@ export default function TechStack() {
         })}
       </div> */}
       <div className="flex flex-wrap justify-center gap-6 lg:px-[6rem] xl:px-[10rem]">
-  {TECH_STACK.map((c) => {
-    const Icon = c.icon;
-    return (
-      <div key={c.name} className="flex flex-col items-center w-[80px] h-20">
-        <Icon className="w-8 h-8" />
-       
+        {TECH_STACK.map((c) => (
+          <div
+            key={c.name}
+            className="flex h-20 w-[80px] flex-col items-center justify-center"
+          >
+            <MagneticIcon icon={c.icon} className="h-8 w-8" />
+          </div>
+        ))}
       </div>
-    );
-  })}
-</div>
     </section>
   );
 }
