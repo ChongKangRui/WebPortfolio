@@ -40,10 +40,13 @@ export default function TechStack() {
         {TECH_STACK.map((c) => (
           <motion.div
             key={c.name}
-            className="flex h-20 w-[80px] flex-col items-center justify-center"
+            className="flex h-24 w-[80px] flex-col items-center justify-center gap-2"
             variants={staggerItem}
           >
             <MagneticIcon icon={c.icon} className="h-8 w-8" />
+            <span className="text-center text-xs text-gray-500 dark:text-gray-400">
+              {c.name}
+            </span>
           </motion.div>
         ))}
       </motion.div>

@@ -69,6 +69,7 @@ import {
   SiTanstack,
   SiAxios,
   SiGmail,
+  SiNetlify,
 } from "react-icons/si";
 
 import { VscVscode } from "react-icons/vsc";
@@ -119,13 +120,14 @@ export const TECH_STACK: TechItem[] = [
   { name: "Docker", icon: SiDocker },
   { name: "Vercel", icon: SiVercel },      // ← Add
   { name: "Render", icon: SiRender },
-  
+  { name: "Netlify", icon: SiNetlify }, 
 
   // 6. GAME DEVELOPMENT
   { name: "Unreal Engine", icon: SiUnrealengine },
   { name: "Unity", icon: SiUnity },
 
   // 7. TOOLS (End with these)
+  { name: "Visual Studio", icon: VscVscode },
   { name: "Visual Studio Code", icon: VscVscode },
   { name: "Discord", icon: SiDiscord },
 ];
