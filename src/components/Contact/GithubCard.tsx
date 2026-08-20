@@ -13,15 +13,17 @@ const CHIP_NAMES = [...PROJECTS.map((project) => project.title), ...EXTRA_GITHUB
 
 // Scattered spots + independent timing per chip so they drift out of sync
 // instead of floating in lockstep. Kept clear of the icon/label corner, and
-// longer names get extra clearance from the right edge.
+// longer names get extra clearance from the right edge. dx/dy point each
+// chip toward its own compass direction (spread evenly around a circle)
+// instead of every chip drifting the same up-and-right path.
 const CHIP_LAYOUT = [
-  { top: "30%", left: "42%", duration: 5, delay: 0 }, // EcommerGameShop
-  { top: "42%", left: "14%", duration: 6.5, delay: 1 }, // AI Power Customer Support
-  { top: "55%", left: "70%", duration: 5.5, delay: 2 }, // YelpCamp
-  { top: "62%", left: "6%", duration: 4, delay: 0.5 }, // CGE
-  { top: "68%", left: "44%", duration: 6, delay: 1.5 }, // SpaceShooter_3D
-  { top: "82%", left: "18%", duration: 5, delay: 2.5 }, // Python_FileOrganizer
-  { top: "80%", left: "58%", duration: 4.5, delay: 3 }, // Python_UnitConverter
+  { top: "30%", left: "42%", duration: 5, delay: 0, dx: 10, dy: 0 }, // EcommerGameShop -> right
+  { top: "42%", left: "14%", duration: 6.5, delay: 1, dx: 6, dy: 8 }, // AI Power Customer Support -> down-right
+  { top: "55%", left: "70%", duration: 5.5, delay: 2, dx: -2, dy: 10 }, // YelpCamp -> down
+  { top: "62%", left: "6%", duration: 4, delay: 0.5, dx: -9, dy: 4 }, // CGE -> down-left
+  { top: "75%", left: "54%", duration: 6, delay: 1.5, dx: -9, dy: -4 }, // SpaceShooter_3D -> up-left
+  { top: "82%", left: "18%", duration: 5, delay: 2.5, dx: -2, dy: -10 }, // Python_FileOrganizer -> up
+  { top: "20%", left: "68%", duration: 4.5, delay: 3, dx: 6, dy: -8 }, // Python_UnitConverter -> up-right
 ];
 
 export default function GithubCard({
@@ -47,7 +49,7 @@ export default function GithubCard({
               key={name}
               className="absolute rounded-full border border-black/15 bg-black/[0.03] px-3 py-1 text-xs font-medium whitespace-nowrap text-black/70 dark:border-white/15 dark:bg-white/[0.04] dark:text-white/70"
               style={{ top: layout.top, left: layout.left }}
-              animate={{ y: [0, -10, 0], x: [0, 6, 0] }}
+              animate={{ y: [0, layout.dy, 0], x: [0, layout.dx, 0] }}
               transition={{
                 duration: layout.duration,
                 delay: layout.delay,
