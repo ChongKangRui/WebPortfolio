@@ -1,9 +1,12 @@
 import { motion } from "framer-motion";
+import { FiArrowUpRight } from "react-icons/fi";
 import { DEFAULT_SECTIONS, CONTACT_LINKS } from "../../content";
 import GmailCard from "./GmailCard";
 import LinkedInCard from "./LinkedInCard";
 import GithubCard from "./GithubCard";
 import { fadeInUp, revealTransition, revealViewport } from "../../lib/motion";
+
+const GAME_DEV_PORTFOLIO_URL = "https://chongkangrui.github.io/Portfolio/";
 
 export default function ContactBento() {
   const gmail = CONTACT_LINKS.find((link) => link.name === "Gmail")!;
@@ -51,6 +54,22 @@ export default function ContactBento() {
           delay={0.3}
         />
       </div>
+
+      {/* Secondary callout, not a contact method — kept visually distinct
+          from the cards above so it doesn't read as a 4th way to reach me. */}
+      <motion.a
+        href={GAME_DEV_PORTFOLIO_URL}
+        target="_blank"
+        rel="noreferrer"
+        initial={fadeInUp}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={revealViewport}
+        transition={revealTransition(0.4)}
+        className="mx-auto mt-8 flex max-w-4xl items-center justify-center gap-1.5 text-center text-sm text-gray-500 underline decoration-dotted underline-offset-4 transition-colors hover:text-black dark:text-gray-400 dark:hover:text-white"
+      >
+        Hiring for a game dev role? See my game-focused portfolio
+        <FiArrowUpRight size={14} />
+      </motion.a>
     </section>
   );
 }
