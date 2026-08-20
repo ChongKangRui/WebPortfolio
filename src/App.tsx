@@ -5,6 +5,7 @@ import ExpertiseOffer from "./components/Expertise/ExpertiseOffer";
 import TechStack from "./components/TechStack/TechStack";
 import Projects from "./components/Projects/Projects";
 import Experience from "./components/Experience/Experience";
+import ContactBento from "./components/Contact/ContactBento";
 function App() {
 
   return (
@@ -16,6 +17,7 @@ function App() {
         <TechStack/>
         <Projects/>
         <Experience/>
+        <ContactBento/>
 
       </div>
     </>

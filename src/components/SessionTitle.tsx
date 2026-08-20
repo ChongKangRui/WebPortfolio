@@ -23,7 +23,7 @@ export default function SessionTitle({
       </div>
 
       {/* Right side - Description */}
-      <p className="text-sm sm:text-base max-w-full md:max-w-[30rem] text-gray-600 dark:text-gray-300">
+      <p className="text-sm sm:text-base max-w-full md:max-w-[20rem] lg:max-w-[30rem] text-gray-600 dark:text-gray-300">
         {description}
       </p>
     </div>

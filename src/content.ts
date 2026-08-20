@@ -58,9 +58,11 @@ import {
   SiPrisma,
   SiTanstack,
   SiAxios,
+  SiGmail,
 } from "react-icons/si";
 
 import { VscVscode } from "react-icons/vsc";
+import { FiLinkedin } from "react-icons/fi";
 import { CsharpIcon } from "./components/icons/devicon-line-csharp";
 
 import ecommerGameShopImg from "./assets/projects/ecommergameshop.jpg";
@@ -229,5 +231,21 @@ export const EXPERIENCES: Experience[] = [
       "Used Unreal Engine's replication system to keep gameplay and AI state consistent between server and clients for the multiplayer demo.",
       "Built the core gameplay systems for Chiyo - puzzle logic, AI behavior, the save system, and player interaction and inventory mechanics.",
     ],
+  },
+];
+
+type ContactLink = {
+  name: string;
+  href: string;
+  icon: React.ComponentType<{ className?: string; size?: number }>;
+};
+
+export const CONTACT_LINKS: ContactLink[] = [
+  { name: "Gmail", href: "mailto:chongkangrui@gmail.com", icon: SiGmail },
+  { name: "GitHub", href: "https://github.com/ChongKangRui", icon: SiGithub },
+  {
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/in/chong-kang-rui-b06282249/",
+    icon: FiLinkedin,
   },
 ];
