@@ -70,6 +70,7 @@ import {
   SiAxios,
   SiGmail,
   SiNetlify,
+  SiCloudinary,
 } from "react-icons/si";
 
 import { VscVscode } from "react-icons/vsc";
@@ -111,7 +112,7 @@ export const TECH_STACK: TechItem[] = [
   { name: "MongoDB", icon: SiMongodb },
   { name: "PostgreSQL", icon: SiPostgresql },
   { name: "Prisma", icon: SiPrisma },
-
+  { name: "Cloudinary", icon: SiCloudinary },
   // 5. BUILD TOOLS & DEVOPS
   { name: "Vite", icon: SiVite },
   { name: "Git", icon: SiGit },
