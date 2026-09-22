@@ -18,7 +18,7 @@ import ExpertiseContentCard from "./ExpertiseContentCard";
 
 export default function ExpertiseOffer() {
   const autoplay = useRef(Autoplay({ delay: 3500, stopOnInteraction: false }));
-
+  const carouselServices = SERVICES.length > 5 ? SERVICES : [...SERVICES, ...SERVICES, ...SERVICES];
   return (
     <section
       className="relative overflow-hidden px-6 py-20"
@@ -32,13 +32,13 @@ export default function ExpertiseOffer() {
 
       <Carousel
         className="mt-12 w-full"
-        opts={{ loop: true, align: "start" }}
+        opts={{ loop: true }}
         plugins={[autoplay.current]}
       >
         <CarouselContent className="-ml-1">
-          {SERVICES.map((service, index) => (
+          {carouselServices.map((service, index) => (
             <CarouselItem
-              key={service.title}
+              key={`${service.title}-${index}`}
               className="basis-full pl-1 sm:basis-1/2 lg:basis-1/3"
             >
               <motion.div

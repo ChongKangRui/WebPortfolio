@@ -2,6 +2,7 @@ import type { NavSection } from "./components/Navbar";
 import fullStackImg from "./assets/fullStack.png";
 import backendImg from "./assets/backend.png";
 import gameDevImg from "./assets/gameDev.png";
+import aiRagImg from "./assets/aiRag.jpg"
 
 
 export const DEFAULT_SECTIONS: NavSection[] = [
@@ -34,11 +35,19 @@ export const SERVICES = [
     imageSrc: backendImg,
   },
   {
+    title: "AI & RAG Engineering",
+    content:
+      "Retrieval-augmented generation systems that ground LLM answers in your own documents — vector search, hybrid keyword+semantic search, and reranking for accurate retrieval. Experience with citation-grounded outputs to reduce hallucination, evaluation-driven benchmarking to validate retrieval quality, and async streaming LLM integrations",
+    imageSrc: aiRagImg,
+  },
+  {
     title: "Game Development",
     content:
       "Commercial and personal game projects built with Unreal Engine and Unity. Experience with multiplayer systems, ECS architecture, complex state management, custom algorithms and mathematical solutions.",
     imageSrc: gameDevImg,
   },
+ 
+  
 ];
 import {
   SiJavascript,
@@ -71,6 +80,8 @@ import {
   SiGmail,
   SiNetlify,
   SiCloudinary,
+  SiRailway,
+  SiFastapi,
 } from "react-icons/si";
 
 import { VscVscode } from "react-icons/vsc";
@@ -80,6 +91,7 @@ import { CsharpIcon } from "./components/icons/devicon-line-csharp";
 import ecommerGameShopImg from "./assets/projects/ecommergameshop.jpg";
 import aiPowerCustomerSupportImg from "./assets/projects/aipowercustomersupport.jpg";
 import yelpCampImg from "./assets/projects/yelpcamp.jpg";
+import legalRagSummarizerImg from "./assets/projects/LegalRAGSummarization.png";
 
 type TechItem = {
   name: string;
@@ -107,6 +119,7 @@ export const TECH_STACK: TechItem[] = [
   { name: "Next.js", icon: SiNextdotjs },
   { name: "Tanstack", icon: SiTanstack },
   { name: "Axios", icon: SiAxios },
+  {name: "FastAPI", icon: SiFastapi},
 
   // 4. DATABASES
   { name: "MongoDB", icon: SiMongodb },
@@ -119,9 +132,10 @@ export const TECH_STACK: TechItem[] = [
   { name: "GitHub", icon: SiGithub },
   { name: "GitHub Actions", icon: SiGithubactions },
   { name: "Docker", icon: SiDocker },
-  { name: "Vercel", icon: SiVercel },      // ← Add
+  { name: "Vercel", icon: SiVercel },      
   { name: "Render", icon: SiRender },
   { name: "Netlify", icon: SiNetlify }, 
+  { name: "Railway", icon: SiRailway }, 
 
   // 6. GAME DEVELOPMENT
   { name: "Unreal Engine", icon: SiUnrealengine },
@@ -143,6 +157,24 @@ type Project = {
 };
 
 export const PROJECTS: Project[] = [
+  {
+    title: "Legal RAG Summarizer",
+    description:
+      "A RAG system for querying and summarizing legal documents — Terms of Service, employment agreements, and contracts — built to compare retrieval strategies rather than assume one is best. Vector search, BM25, hybrid RRF fusion, and cross-encoder reranking run side by side, backed by an eval harness that scores each against a hand-labeled golden set for retrieval precision/recall/MRR and citation accuracy, plus a retrieval inspector and multi-strategy comparison view.",
+    techStack: [
+      "React",
+      "TypeScript",
+      "FastAPI",
+      "Python",
+      "Groq",
+      "fastembed",
+      "BM25",
+      "Docker",
+    ],
+    liveDemoUrl: "https://legal-rag-summarizer.vercel.app",
+    githubUrl: "https://github.com/ChongKangRui/LegalRAGSummarizer",
+    imageSrc: legalRagSummarizerImg,
+  },
   {
     title: "EcommerGameShop",
     description:
@@ -197,6 +229,7 @@ export const PROJECTS: Project[] = [
     githubUrl: "https://github.com/ChongKangRui/YelpCamp",
     imageSrc: yelpCampImg,
   },
+   
   
 ];
 
