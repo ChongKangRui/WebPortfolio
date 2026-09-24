@@ -20,13 +20,12 @@ const CHIP_NAMES = [...PROJECTS.map((project) => project.title), ...EXTRA_GITHUB
 // chip toward its own compass direction (spread evenly around a circle)
 // instead of every chip drifting the same up-and-right path.
 const CHIP_LAYOUT = [
-  { top: "30%", left: "42%", duration: 5, delay: 0, dx: 10, dy: 0 }, // EcommerGameShop -> right
-  { top: "42%", left: "14%", duration: 6.5, delay: 1, dx: 6, dy: 8 }, // AI Power Customer Support -> down-right
-  { top: "55%", left: "70%", duration: 5.5, delay: 2, dx: -2, dy: 10 }, // YelpCamp -> down
-  { top: "62%", left: "6%", duration: 4, delay: 0.5, dx: -9, dy: 4 }, // CGE -> down-left
-  { top: "75%", left: "54%", duration: 6, delay: 1.5, dx: -9, dy: -4 }, // SpaceShooter_3D -> up-left
-  { top: "82%", left: "18%", duration: 5, delay: 2.5, dx: -2, dy: -10 }, // Python_FileOrganizer -> up
-  { top: "20%", left: "68%", duration: 4.5, delay: 3, dx: 6, dy: -8 }, // Python_UnitConverter -> up-right
+  { top: "30%", left: "42%", duration: 5, delay: 0, dx: 10, dy: 0 }, // Legal Rag Application -> right
+  { top: "42%", left: "14%", duration: 6.5, delay: 1, dx: 6, dy: 8 },  // EcommerGameShop -> right
+  { top: "55%", left: "70%", duration: 5.5, delay: 2, dx: -2, dy: 10 }, // AI Power Customer Support -> down-right
+  { top: "62%", left: "6%", duration: 4, delay: 0.5, dx: -9, dy: 4 }, // YelpCamp -> down
+  { top: "75%", left: "54%", duration: 6, delay: 1.5, dx: -9, dy: -4 }, // Python_FileOrganizer -> up-left
+
 ];
 
 export default function GithubCard({
