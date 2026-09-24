@@ -25,19 +25,19 @@ export const SERVICES = [
   {
     title: "Full Stack Web Development",
     content:
-      "Responsive, production-grade web apps with React, Next.js, and TypeScript — from UI to deployment on Vercel.",
+      "Responsive, production-grade web apps from UI to deployment, covering frontend, backend, database design, and cloud hosting.",
     imageSrc: fullStackImg,
   },
   {
     title: "API & Backend development",
     content:
-      "Scalable REST APIs and backend systems with Node.js, PostgreSQL, and Prisma. Experience with AI/LLM integrations, payment processing (Stripe), and CI/CD via GitHub Actions and Docker.",
+      "Scalable REST APIs and backend systems with experience in payment processing, AI/LLM integrations, and CI/CD pipelines.",
     imageSrc: backendImg,
   },
   {
     title: "AI & RAG Engineering",
     content:
-      "Retrieval-augmented generation systems that ground LLM answers in your own documents — vector search, hybrid keyword+semantic search, and reranking for accurate retrieval. Experience with citation-grounded outputs to reduce hallucination, evaluation-driven benchmarking to validate retrieval quality, and async streaming LLM integrations",
+      "Retrieval-augmented generation systems that ground LLM answers in your own documents. Covers vector search, hybrid keyword and semantic search with reranking, citation-grounded outputs to reduce hallucination, evaluation-driven benchmarking to validate retrieval quality, and async streaming LLM integrations.",
     imageSrc: aiRagImg,
   },
   {
@@ -160,7 +160,7 @@ export const PROJECTS: Project[] = [
   {
     title: "Legal RAG Summarizer",
     description:
-      "A RAG system for querying and summarizing legal documents — Terms of Service, employment agreements, and contracts — built to compare retrieval strategies rather than assume one is best. Vector search, BM25, hybrid RRF fusion, and cross-encoder reranking run side by side, backed by an eval harness that scores each against a hand-labeled golden set for retrieval precision/recall/MRR and citation accuracy, plus a retrieval inspector and multi-strategy comparison view.",
+      "A RAG system for querying and summarizing legal documents — Terms of Service, employment agreements and contracts — built to compare retrieval strategies rather than assume one is best. Vector search, BM25, hybrid RRF fusion and cross-encoder reranking run side by side, backed by an eval harness that scores each against a hand-labeled golden set for retrieval precision/recall/MRR and citation accuracy, plus a retrieval inspector and multi-strategy comparison view.",
     techStack: [
       "React",
       "TypeScript",
